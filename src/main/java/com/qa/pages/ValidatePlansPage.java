@@ -126,17 +126,16 @@ public class ValidatePlansPage extends TestBase {
         String expectedLite = verifyLitePackageAmount.getText();
         String expectedClassic = verifyClassicPackageAmount.getText();
         String expectedPremium = verifyPremiumPackageAmount.getText();
+        if(expectedLite.contains("Starting from: ")){
+            expectedLite = expectedLite.replace("Starting from: ","");
+            expectedClassic = expectedClassic.replace("Starting from: ","");
+            expectedPremium = expectedPremium.replace("Starting from: ","");
+        }
         if(countryName == "KSA") {
             try {
-                if (expectedLite.contains("15") && expectedLite.contains("SAR/month")) {
-                    System.out.println("Price of KSA-Lite package is correct");
-                }
-                if (expectedClassic.contains("25") && expectedClassic.contains("SAR/month")) {
-                    System.out.println("Price of KSA-Classic package is correct");
-                }
-                if (expectedPremium.contains("60") && expectedClassic.contains("SAR/month")) {
-                    System.out.println("Price of KSA-Premium package is correct");
-                }
+                Assert.assertEquals(expectedLite,"15 SAR/month");
+                Assert.assertEquals(expectedClassic,"25 SAR/month");
+                Assert.assertEquals(expectedPremium,"60 SAR/month");
             }
             catch(Exception e) {
                 System.out.println("Incorrect price rate for KSA "+e.getMessage());
@@ -145,15 +144,9 @@ public class ValidatePlansPage extends TestBase {
 
         if(countryName == "Bahrain") {
             try {
-                if (expectedLite.contains("2") && expectedLite.contains("BHD/month")) {
-                    System.out.println("Price of Bahrain-Lite package is correct");
-                }
-                if (expectedClassic.contains("3") && expectedClassic.contains("BHD/month")) {
-                    System.out.println("Price of Bahrain-Classic package is correct");
-                }
-                if (expectedPremium.contains("6") && expectedClassic.contains("BHD/month")) {
-                    System.out.println("Price of Bahrain-Premium package is correct");
-                }
+                Assert.assertEquals(expectedLite,"2 BHD/month");
+                Assert.assertEquals(expectedClassic,"3 BHD/month");
+                Assert.assertEquals(expectedPremium,"6 BHD/month");
             }
             catch(Exception e) {
                 System.out.println("Incorrect price rate for Bahrain "+e.getMessage());
@@ -162,15 +155,9 @@ public class ValidatePlansPage extends TestBase {
 
         if(countryName == "Kuwait") {
             try {
-                if (expectedLite.contains("1.2") && expectedLite.contains("KWD/month")) {
-                    System.out.println("Price of Kuwait-Lite package is correct");
-                }
-                if (expectedClassic.contains("2.5") && expectedClassic.contains("KWD/month")) {
-                    System.out.println("Price of Kuwait-Classic package is correct");
-                }
-                if (expectedPremium.contains("4.8") && expectedClassic.contains("KWD/month")) {
-                    System.out.println("Price of Kuwait-Premium package is correct");
-                }
+                Assert.assertEquals(expectedLite,"1.2 KWD/month");
+                Assert.assertEquals(expectedClassic,"2.5 KWD/month");
+                Assert.assertEquals(expectedPremium,"4.8 KWD/month");
             }
             catch(Exception e) {
                 System.out.println("Incorrect price rate for Kuwait "+e.getMessage());

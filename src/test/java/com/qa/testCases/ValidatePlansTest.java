@@ -30,42 +30,30 @@ public class ValidatePlansTest extends TestBase {
     }
 
     @Test(priority=2)
-    public void clickValidateEnglishPage(){
+    public void clickEnglishLangBtn(){
         validatePlansPage.clickEnglishLanguage();
         String title = launchBrowser.validateEnglishPagetitle();
         Assert.assertEquals(title, "stc tv - Watch Online movies, series & live TV | Enjoy Free Trial");
     }
 
     @Test(priority=3)
-    public void verifyListOfPackages(){
+    public void verifyListAndAmountOfPackages(){
         validatePlansPage.verifyDefaultCountryDisplaying();
         validatePlansPage.verifyPackageNameList();
-
-        validatePlansPage.chooseCountryBtn();
-        validatePlansPage.selectCountry("Bahrain");
-        validatePlansPage.verifyPackageNameList();
-
-        validatePlansPage.chooseCountryBtn();
-        validatePlansPage.selectCountry("Kuwait");
-        validatePlansPage.verifyPackageNameList();
-    }
-
-    @Test(priority=4)
-    public void verifyAmountOfPackages(){
-        validatePlansPage.chooseCountryBtn();
-        validatePlansPage.selectCountry("KSA");
         validatePlansPage.verifyPackageAmount("KSA");
 
         validatePlansPage.chooseCountryBtn();
         validatePlansPage.selectCountry("Bahrain");
+        validatePlansPage.verifyPackageNameList();
         validatePlansPage.verifyPackageAmount("Bahrain");
 
         validatePlansPage.chooseCountryBtn();
         validatePlansPage.selectCountry("Kuwait");
+        validatePlansPage.verifyPackageNameList();
         validatePlansPage.verifyPackageAmount("Kuwait");
     }
 
-    @Test(priority=5)
+    @Test(priority=4)
     public void verifyCountryOnSelectCountryPopup(){
         validatePlansPage.chooseCountryBtn();
         validatePlansPage.verifyCountryList();
